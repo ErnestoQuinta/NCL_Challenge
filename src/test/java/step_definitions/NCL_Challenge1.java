@@ -1,14 +1,8 @@
 package step_definitions;
 
-import static org.testng.Assert.assertTrue;
-
 import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 
 
 import constants.Constants;
@@ -114,16 +108,9 @@ public class NCL_Challenge1 {
 
 		@When("^Price range is filtered to \"([^\"]*)\"$")
 		public void price_range_is_filtered_to(String arg1) throws Throwable {
+			System.out.println("Filter for '"+arg1+"' price range" );
+			shore.filterbyPrice(arg1);
 			
-			/*WebElement element = driver.findElement(By.xpath("//div[@id='price-slider-legend']//span[@class='legend-column max']"));
-			JavascriptExecutor js= (JavascriptExecutor)driver;
-			js.executeScript("arguments[0].innerText = '"+arg1+"'", element);
-			
-			WebElement elem =  driver.findElement(By.xpath("//div[@id='price-slider-legend']"));
-			int width = elem.getSize().width;
-			Actions act = new Actions(driver);
-		    act.moveToElement(elem).moveByOffset((width/2)-2, 0).click().perform();
-		    */
 		}
 
 		@Then("^Only shore excursions within range are displayed$")

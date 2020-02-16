@@ -4,11 +4,12 @@ import static org.testng.Assert.assertTrue;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 
 public class ShoreExcursionPageFactory {
 	
@@ -38,10 +39,50 @@ public class ShoreExcursionPageFactory {
 	@FindBy(xpath="//li[@class='opened']//div[@class='filterbox']")
 	WebElement portModal;
 	
+	@FindBy(xpath="//div[@id='price-slider-values']//span[1]")
+	WebElement priceFilter1;
+	
+	@FindBy(xpath="//div[@id='price-slider-values']//span[2]")
+	WebElement priceFilter;
+	
+	
 	
 	public ShoreExcursionPageFactory(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
+	}
+	
+	
+	
+	public void filterbyPrice(String priceRange) {
+
+		String [] values = priceRange.split("-");
+		
+		String minValue = values[0].substring(1);
+		String maxValue = values[1].substring(1);
+		
+		System.out.println("minimun value : "+ minValue);
+		System.out.println("maximun value : "+ maxValue);
+		
+		Actions act = new Actions(driver);
+		
+		int priceMin = priceFilter1.getLocation().getX();
+		System.out.println("1 - get X: "+priceMin);		
+		int priceMax = priceFilter.getLocation().getX();
+		System.out.println("get X: "+priceMax);
+		
+		int diff = priceMax - priceMin;
+		
+		System.out.println("price bar total in pixels : "+ diff);
+	
+		act.dragAndDropBy(priceFilter, -180, 0).release().build().perform();
+		//priceFilter1.click();
+	   	    
+		/*continue working on this, drag and drop is not the optimal method since the value is to small and will be trigger and error
+		* the other idea will be changing the value in the URL but this will not be the most realistic option.
+		* 
+		*/
+		
 	}
 	
 	public void searchDestination(String destination) {
