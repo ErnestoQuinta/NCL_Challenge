@@ -76,11 +76,11 @@ public class ShoreExcursionPageFactory {
 		System.out.println("price bar total in pixels : "+ diff);
 	
 		act.dragAndDropBy(priceFilter, -180, 0).release().build().perform();
-		//priceFilter1.click();
 	   	    
-		/*continue working on this, drag and drop is not the optimal method since the value is to small and will be trigger and error
-		* the other idea will be changing the value in the URL but this will not be the most realistic option.
-		* 
+		/*
+		 * continue working on this, drag and drop is not the optimal method since the value is to small and will be trigger and error
+		 * the other idea will be changing the value in the URL but this will not be the most realistic option.
+		 * So still need clarification. 
 		*/
 		
 	}

@@ -110,7 +110,11 @@ public class NCL_Challenge1 {
 		public void price_range_is_filtered_to(String arg1) throws Throwable {
 			System.out.println("Filter for '"+arg1+"' price range" );
 			shore.filterbyPrice(arg1);
-			
+			/*
+			 * continue working on this, drag and drop is not the optimal method since the value is to small and will be trigger and error
+			 * the other idea will be changing the value in the URL but this will not be the most realistic option.
+			 * So still need clarification. 
+			*/
 		}
 
 		@Then("^Only shore excursions within range are displayed$")
